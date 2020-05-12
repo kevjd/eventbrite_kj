@@ -1,1 +1,35 @@
-<h2>Bienvenue sur Eventbrite</h2>
+<div class="jumbotron">
+  <h1 class="display-4">Retrouvez tous les évenements à Rennes !</h1>
+  <p class="lead">Vous pouvez créer votre évenement en cliquant ci-dessous :</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/events/new" role="button">Créer un évenement </a>
+  </p>
+</div>
+
+<h5 class="text-center">Les évenements à venir : </h5>
+<div class="container">
+  <div class="row">
+    <% @events.each do |event|%>
+      <div class="col-sm-6" style="padding: 30px">
+        <div class="card">
+          <div class="card-header">Ville : <%= event.location %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title%></h5>
+            <p class="card-text"><%= event.description%></p>
+            <p class="card-text">Date de début : <%= event.start_date%></p>
+            <p class="card-text">Durée : <%= event.duration%></p>
+            <p class="card-text">Prix : <%= event.price%>€</p>
+          <div class="card-footer"><%= link_to "En savoir plus...", event_path(event.id), 
+          class:"btn btn-primary" %>
+          </div>
+
+            
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
